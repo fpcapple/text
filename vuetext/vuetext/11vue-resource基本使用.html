@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <!-- this.$http.get等 -->
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <input type="button" value="get请求" @click="getclick">
+        <input type="button" value="post请求" @click="postclick">
+    </div>
+
+    <script>
+        var vm = new Vue({
+                    el: ".app",
+                    data: {
+                        msg: "a",
+                    },
+                    methods: {
+                        getclick() {
+                            this.$http.get('http://192.168.0.113:8080/users').then(function (result) {
+                                console.log(result);
+                            })
+                        },
+                        postclick() {
+                            this.$http.post('http://192.168.0.113:8080/login-check',{userId:"zhansan",password:"root"}).then(function (result) {
+                                console.log(result);
+                            })
+                        }
+                    }
+                })
+    </script>
+</body>
+
+</html>

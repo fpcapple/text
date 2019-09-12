@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<com1 ref="mycom"></com1>
+			
+			<h3 ref="myh3" @click="clickh3">xhxhxhxhxhx</h3>
+		</div>
+
+		<script>
+			
+			var com = {
+				template:"<h1>这是一个组件</h1>",
+				data(){
+					return{
+						msg : "这个是组件的数据"
+					}
+				}
+			}
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "a",
+				},
+				methods:{
+					clickh3(){
+						//获取到dom 中元素的属性值 
+						console.log(this.$refs.myh3.innerText)
+						// 可以获得组件中的数据
+						console.log(this.$refs.mycom.msg)
+					}
+				},
+				components:{
+					"com1" :com
+				}
+			})
+		</script>
+	</body>
+</html>

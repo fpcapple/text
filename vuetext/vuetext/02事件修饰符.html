@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<style>
+			.a{
+				height: 200px;
+				width: 200px;
+				background-color: aqua;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="app">
+			<!-- 冒泡触发 -->
+			<div class="a" @click="a">
+				<input type="button" value="按钮" @click.stop="b"/>
+			</div>
+			<!-- .prevent 阻止默认行为 -->
+			<!-- .capture 触发捕获机制 -->
+			<!-- .self触发自己事件 不阻止其他元素的冒泡行为-->
+			<!-- .once只触发一次事件 -->
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "a",
+				},
+				methods:{
+					a:function(){
+						console.log("a");
+					},
+					b:function(){
+						console.log("b");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

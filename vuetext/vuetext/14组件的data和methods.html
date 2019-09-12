@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<mycom></mycom>
+			<mycount></mycount>
+		</div>
+
+		<template id="count">
+			<div>
+				<input type="button" value="count++" @click="sum" />
+				{{count}}
+			</div>
+		</template>
+		<script>
+			
+			Vue.component("mycom",{
+				template:"<h2>{{msg}}</h2>",
+				data(){
+					return{
+						msg:"这个是组件data的msg",
+					}						
+				},	
+			})
+			
+			Vue.component("mycount",{
+				template:"#count",
+				data(){
+					return{
+						count : 0
+					}						
+				},	
+				methods:{
+					sum(){
+						this.count++;
+					}
+				}
+			})
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "a",
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

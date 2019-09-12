@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<div v-for="item in list">
+				{{item}}
+			</div>
+
+			<div v-for="item in list2">
+				{{item.name}}: {{item.age}}
+			</div>
+			
+			<div v-for="(val,key) in list3">
+				{{key}} : {{val}}
+			</div>
+			
+			<div v-for="n in 10">
+				{{n}}
+			</div>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: ".app",
+				data: {
+					list: [1, 2, 3, 4, 5, 6],
+					list2: [{
+							name: "xh",
+							age: 10
+						},
+						{
+							name: "wh",
+							age: 20
+						}
+					],
+					list3: {
+						name: "list3",
+						age: 100,
+						id: 1
+					}
+				},
+				methods: {
+
+				}
+			})
+		</script>
+	</body>
+</html>

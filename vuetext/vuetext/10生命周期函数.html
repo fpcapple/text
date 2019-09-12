@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			{{msg}}
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "a",
+				},
+				methods:{
+					
+                },
+                beforeCreate() {
+                    // 这个函数执行的时候 data methods 中的数据都还没有初始化
+                },
+                created () {
+                  // 在和这个函数执行的时候 data methods 中的数据已经初始化了
+                  //若想要操作数据 最早需要在这个函数中执行  
+                },
+                beforeMount() {
+                    //模板已经编译完成了 但是还在内存中没有渲染到页面
+                },
+                mounted() {
+                    //内存中的模板已经真实的挂在到页面中
+                    //mounted是实例创建的最后机会
+                    //操作dom 最早的节点
+                },
+                beforeUpdate() {
+                    //我们的界面还没有更新 数据已经被更新了
+                    //页面上的数据是旧的 但是data 中的数据已经更新了 还没有挂在到页面中去
+                },
+                updated() {
+                    //内存中的数据已经渲染到我们的页面上了 data 中的数据和页面上显示的是一样的
+                },
+                beforeDestroy() {
+                    
+                },
+                destroyed() {
+                    
+                },
+			})
+		</script>
+	</body>
+</html>

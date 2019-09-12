@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<h4>{{msg|file}}</h4>
+			<h3>{{msg|fil}}</h3>
+		</div>
+
+		<script>
+			//第一个参数是默认的值 过滤器是可以传参的 过滤器可以多次调用不同的
+			//全局过滤器
+			Vue.filter("file",function(data){
+			return	data.replace(/a/g,"b");
+			});
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "aaaaaa",
+				},
+				methods:{
+					
+				},
+				filters:{
+					fil(data){
+						//过滤器是需要返回值的
+					 return	data.replace(/a/g,"c")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

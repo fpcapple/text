@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			
+			<com1 :a2="msg" @func="show"></com1>
+			
+			
+			
+		</div>
+
+		<template id="com1">
+			<div>
+				<h1 @click="h1click">abc{{a2}}</h1>
+			</div>
+		</template>
+		<script>
+			
+			Vue.component("com1",{
+				template: "#com1",
+				data(){
+					return{
+						msg2 : "----这个是子组件的数据"
+					}
+				},
+			//传过来的msg 是只读的 是不能更改的
+				props:['a2'],
+				methods:{
+					h1click(){
+						this.$emit("func",this.msg2)
+					}
+				}
+			})
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "父组件的msg",
+					fromson : ""
+				},
+				methods:{
+					show(id){
+						console.log("调用了父组件的show方法"+id)
+						this.fromson = id;
+						console.log("从子组件拿来的数据"+this.fromson)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

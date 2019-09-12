@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<input type="button" value="登录" @click="dl" />
+			<input type="button" value="注册" @click="zc"/>
+			<com1 v-if="flag"></com1>
+			<com2 v-else="flag"></com2>
+		</div>
+
+		<script>
+			
+			Vue.component("com1",{
+				template:"<p>登录页面</p>"
+			})
+			
+			Vue.component("com2",{
+				template:"<p>注册页面</p>"
+			})
+			var vm = new Vue({
+				el:".app",
+				data:{
+					flag : true
+				},
+				methods:{
+					dl(){
+						this.flag = true;
+					},
+					zc(){
+						this.flag = false;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

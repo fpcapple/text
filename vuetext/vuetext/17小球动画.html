@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<style type="text/css">
+		.ball{
+			width: 15px;
+			height: 15px;
+			background-color: #FF0000;
+			border-radius: 50%;
+		}
+	</style>
+	<body>
+		<div class="app">
+			<input type="button" value="加入购物车" @click="flag=!flag"/>
+			
+			<transition
+			@before-enter="bf"
+			@enter="en"
+			@after-enter="af">
+				<div class="ball" v-if="flag"></div>
+			</transition>
+			
+			
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el:".app",
+				data:{
+					flag : true
+				},
+				methods:{
+					bf(el){
+						el.style.transform = 'translate(0,0)'
+					},
+					en(el,done){
+						el.offsetWidth;
+						el.style.transform = 'translate(150px,450px)'
+						el.style.transition = 'all 1s ease'
+						done()
+					},
+					af(el){
+						this.flag = !this.flag
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

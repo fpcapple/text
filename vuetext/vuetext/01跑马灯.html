@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>01跑马灯</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="text">
+			<input type="button" value="开始" @click="start" />
+			<input type="button" value="停止" @click="stop"/>
+			<h3>{{msg}}</h3>
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: "#text",
+				data: {
+					msg: "saksdfakdjfasdf",
+					interval : null
+				},
+				methods: {
+					start: function() {
+						if (this.interval) return;
+
+						this.interval = setInterval(() => {
+							var end = this.msg.substring(0, 1);
+							var begin = this.msg.substring(1);
+							this.msg = begin + end;
+						}, 400);
+					},
+					stop : function(){
+						clearInterval(this.interval);
+						this.interval = null;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

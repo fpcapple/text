@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	</head>
+	
+	<style type="text/css">
+		.v-enter,
+		.v-leave-to{
+			opacity: 0;
+			transform: translateX(140px);
+		}
+		
+		.v-enter-active,
+		.v-leave-active{
+			transition: all 0.5s ease;
+		}
+	</style>
+	<body>
+		<div class="app">
+			<!-- <a href="#/login">登录</a>
+			<a href="#/reg">注册</a> -->
+			
+			<router-link to="/login?id=100">登录</router-link>
+			<router-link to="/reg">注册</router-link>
+			
+			<transition mode="out-in">
+				<router-view></router-view>
+			</transition>
+			
+			
+		</div>
+
+		<script>
+			
+			var login = {
+				template: "<h1>登录组件</h1>",
+				created(){
+					//可以拿到a标签中传的参数
+					console.log(this.$route.query.id)
+				}
+			}
+			var reg = {
+				template: "<h1>注册组件</h1>"
+			}
+			
+			var router = new VueRouter({
+				routes:[
+					//属性1是path 表示监听哪个地址
+					//属性2是component 表示路由是path时展示相应的组件
+					{path:'/', redirect:'/login'},//默认展示login组件
+					{path:'/login',component:login},
+					{path:'/reg',component:reg},
+					
+				],
+				linkActiveClass:'myactive'//自定义选中项的样式名 可以配置选中项的属性
+			})
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					
+				},
+				methods:{
+					
+				}, 
+				router//将路由注册到ym上
+			})
+		</script>
+	</body>
+</html>

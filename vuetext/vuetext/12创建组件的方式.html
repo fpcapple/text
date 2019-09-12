@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div class="app">
+			<my-first></my-first>
+			<mysec></mysec>
+			<mythd></mythd>
+		</div>
+
+		<script>
+			// 第一种创建
+			var com1 =Vue.extend({
+				template:"<h1>这是我创建的第一个组件</h1>"//组件展示的内容
+			})
+			//名字若是驼峰式的 在引用的时候需要将大写的字母小写前面加上-
+			Vue.component("myFirst",com1);
+			
+			//第二种创建
+			Vue.component("mysec",Vue.extend({
+				template:"<h2>这是我创建的第二个组件</h2>"//组件展示的内容
+			}))
+			
+			//第三种创建
+			Vue.component("mythd",{
+				template:"<h3>这是我创建的第三个组件</h3>"//组件展示的内容
+			})
+			
+			var vm = new Vue({
+				el:".app",
+				data:{
+					msg : "a",
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>
